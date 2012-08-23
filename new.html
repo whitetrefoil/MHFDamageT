@@ -63,11 +63,11 @@
 				</p>
 			</form>
 		</div>
-		<div id="weapon">
-			<form name="weapon">
+		<div id="weaponFilter">
+			<form name="weaponFilter">
 				<h2>武器検索</h2>
 				<p>
-					<label id="weaponElement">属性：
+					<label id="weaponElement" class="close-weapon-prop bow-prop">属性：
 						<select name="element">
 							<option value="all" selected="selected">全て</option>
 							<option value="0">無</option>
@@ -81,7 +81,7 @@
 							<option value="8">睡眠</option>
 						</select>
 					</label>
-					<label id="weaponAmmoType">弾型：
+					<label id="weaponAmmoType" class="bowgun-prop">弾型：
 						<select name="ammoType" >
 							<option value="0">通常1</option>
 							<option value="1" selected="selected">通常2</option>
@@ -111,7 +111,7 @@
 							<option value="27">滅龍</option>
 						</select>
 					</label>
-					<label id="weaponOrderClose">順序：
+					<label class="close-weapon-prop bow-prop">順序：
 						<select name="orderClose">
 							<option value="0" selected="selected">名前</option>
 							<option value="1">攻撃</option>
@@ -119,7 +119,7 @@
 							<option value="3">会心</option>
 						</select>
 					</label>
-					<label id="weaponOrderRange">順序：
+					<label class="bowgun-prop">順序：
 						<select name="orderRange">
 							<option value="0" selected="selected">名前</option>
 							<option value="1">攻撃</option>
@@ -189,7 +189,83 @@
 							<option value="1">1</option>
 						</select>以下
 					</label>
+					<label class="flute-prop">旋律：
+						<select name="melody">
+							<option value="">任意</option>
+							<option value="^621">桃黄赤</option>
+							<option value="^627">桃黄水</option>
+							<option value="^641">桃青赤</option>
+							<option value="^642">桃青黄</option>
+							<option value="^651">桃緑赤</option>
+							<option value="^652">桃緑黄</option>
+							<option value="^654">桃緑青</option>
+							<option value="^657">桃緑水</option>
+							<option value="^671">桃水赤</option>
+							<option value="^674">桃水青</option>
+							<option value="^321">白黄赤</option>
+							<option value="^327">白黄水</option>
+							<option value="^341">白青赤</option>
+							<option value="^342">白青黄</option>
+							<option value="^351">白緑赤</option>
+							<option value="^352">白緑黄</option>
+							<option value="^354">白緑青</option>
+							<option value="^357">白緑水</option>
+							<option value="^371">白水赤</option>
+							<option value="^374">白水青</option>
+						</select>
+					</label>
+					<label class="gunlance-prop">砲撃：
+						<select name="gunlanceType">
+							<option value="0" selected="selected">任意</option>
+							<option value="1">通常型</option>
+							<option value="2">放射型</option>
+							<option value="3">拡散型</option>
+						</select>
+					</label>
+					<label class="bowgun-prop">装：
+						<select name="reloadSpeed">
+							<option value="0" selected="selected">遅い</option>
+							<option value="1">やや遅</option>
+							<option value="2">普通</option>
+							<option value="3">やや速</option>
+							<option value="4">速い</option>
+						</select>
+					</label>
+					<label class="bowgun-prop">反：
+						<select id="recoil">
+							<option value="0">最大</option>
+							<option value="2" selected="selected">中</option>
+							<option value="3">やや小</option>
+							<option value="4">小</option>
+						</select>
+					</label>
+					<label class="bow-prop">タメ：
+						<select name="chargeLevel">
+							<option value="1">タメ１</option>
+							<option value="2">タメ２</option>
+							<option value="3" selected="selected">タメ３</option>
+							<option value="4">タメ４</option>
+						</select>
+					</label>
+					<label class="bow-prop">矢：
+						<select name="arrowType">
+							<option value="0" selected="selected">任意</option>
+							<option value="1">連射</option>
+							<option value="2">拡散</option>
+							<option value="3">貫通</option>
+						</select>
+					</label>
 				</p>
+			</form>
+		</div>
+		<div id="weaponSelection">
+			<form name="weaponSelection">
+				<label>使用武器：
+					<select name="weapon">
+						<option selected>--- Loading ---</option>
+					</select>
+				</label>
+				<label class="range-weapon-prop"></label>
 			</form>
 		</div>
 	</div>
