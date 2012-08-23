@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ダメージシミュレータ</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<table width="800" border="2" cellspacing="1" class="top">
+	<tr>
+		<td id="w0">大剣</td>
+		<td id="w7">太刀</td>
+		<td id="w4">片手剣</td>
+		<td id="w6">双剣</td>
+		<td id="w2">ハンマー</td>
+		<td id="w8">狩猟笛</td>
+		<td id="w3">ランス</td>
+		<td id="w9">ガンランス</td>
+		<td id="w10">弓</td>
+		<td id="w5">ライトボウガン</td>
+		<td id="w1">ヘビィボウガン</td>
+	</tr>
+</table>
+<table width="900" border="2">
+	<tr>
+		<td style="width:4em;" class="t">対戦相手</td>
+		<td><select id="m_enemi"> </select> 防御率 <select id="m_def">
+			<option value="1.00" selected="selected">なし:1.00</option>
+		</select> HC <select id="m_hc">
+			<option value="1,1" selected="selected">なし</option>
+		</select> <label for="m_ang"> <input type="checkbox" name="m_ang" id="m_ang" value="1"> 怒り</label>
+			<label for="m_sugo"> <input type="checkbox" name="m_sugo" id="m_sugo" value="1"> 凄腕</label></td>
+	</tr>
+</table>
+<div style="position:absolute; top:2.2em; left:42.5em; width:12em; height:3em; border:solid 1px gray; background-color:white;">
+	<input type="button" id="c_rep2" class="chkB" value="猟団"> <input type="button" id="c_repm" class="chkB" value=" 祭 ">
+	<input type="button" id="c_rept" class="chkB" value="韋駄天">
+	<input type="button" id="c_repi" class="chkB" value="ｲﾍﾞﾝﾄ">
+	<input type="button" id="c_rep3" class="chkB" value="ｶﾌｪ"> <br>
+	<input type="button" id="c_repg" class="chkB" value="ｶﾞﾁｬ">
+	<input type="button" id="c_repk" class="chkB" value="ｷｯﾄ">
+	<input type="button" id="c_repp" class="chkB" value="ﾊﾟｯｹ">
+	<input type="button" id="c_rep5" class="chkB" value="特典">
+</div>
+<table width="900" border="2">
+	<tr>
+		<td style="width:4em;" class="t">武器選択</td>
+		<td style="width:50em;" colspan="10"><select id="s_srt1">
+			<option value="-" selected="selected">属性</option>
+			<option value="0">無</option>
+			<option value="1">火</option>
+			<option value="2">水</option>
+			<option value="3">雷</option>
+			<option value="4">龍</option>
+			<option value="5">氷</option>
+			<option value="6">毒</option>
+			<option value="7">麻痺</option>
+			<option value="8">睡眠</option>
+		</select> <select id="s_tama">
+			<option value="0">通常1</option>
+			<option value="1" selected="selected">通常2</option>
+			<option value="2">通常3</option>
+			<option value="3">貫通1</option>
+			<option value="4">貫通2</option>
+			<option value="5">貫通3</option>
+			<option value="6">散1</option>
+			<option value="7">散2</option>
+			<option value="8">散3</option>
+			<option value="9">徹甲1</option>
+			<option value="10">徹甲2</option>
+			<option value="11">徹甲3</option>
+			<option value="12">拡散1</option>
+			<option value="13">拡散2</option>
+			<option value="14">拡散3</option>
+			<option value="17">毒1</option>
+			<option value="18">毒2</option>
+			<option value="19">麻痺1</option>
+			<option value="20">麻痺2</option>
+			<option value="21">睡眠1</option>
+			<option value="22">睡眠2</option>
+			<option value="23">火炎</option>
+			<option value="24">水冷</option>
+			<option value="25">電撃</option>
+			<option value="26">氷結</option>
+			<option value="27">滅龍</option>
+		</select> <input type="checkbox" name="s_gunAdd" id="s_gunAdd" value="1" title="弾追加"> <select id="s_srt2">
+			<option value="0" selected="selected">名前</option>
+			<option value="1">攻撃</option>
+			<option value="2">属性</option>
+			<option value="3">会心</option>
+		</select>
+			<small>順</small>
+			ﾚｱ： <select id="s_rare">
+				<option value="12" selected="selected">12</option>
+				<option value="11">11</option>
+				<option value="10">10</option>
+				<option value="9">9</option>
+				<option value="8">8</option>
+				<option value="7">7</option>
+				<option value="6">6</option>
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+			</select>
+			<small>まで</small>
+			ｽﾛｯﾄ： <select id="s_slot">
+				<option value="" selected="selected">-</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<small>以上</small>
+			HR： <select id="s_hr">
+				<option value="800" selected="selected">-</option>
+				<option value="100">499</option>
+				<option value="91">99</option>
+				<option value="81">90</option>
+				<option value="71">80</option>
+				<option value="61">70</option>
+				<option value="51">60</option>
+				<option value="48">50</option>
+				<option value="41">47</option>
+				<option value="38">40</option>
+				<option value="31">37</option>
+				<option value="22">30</option>
+				<option value="17">21</option>
+				<option value="15">16</option>
+				<option value="11">14</option>
+				<option value="8">10</option>
+				<option value="5">7</option>
+				<option value="1">4</option>
+			</select>
+			<small>以下</small>
+			ﾗｽﾀ： <select id="s_rst">
+				<option value="0" selected="selected">-</option>
+				<option value="11">11</option>
+				<option value="10">10</option>
+				<option value="9">9</option>
+				<option value="8">8</option>
+				<option value="7">7</option>
+				<option value="6">6</option>
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+			</select>
+			<small>以下</small>
+		</td>
+	</tr>
+	<tr style="height:42px">
+		<td style="width:4em;" class="t">使用武器<br> <input type="button" id="d_sozai" value="素材" title="強化素材表示"></td>
+		<td style="width:11em;"><select id="s_wp">
+			<option value="" selected="selected">?</option>
+		</select> <br> <select id="s_guns">
+			<option value="" selected="selected">砲撃</option>
+			<option value="通常型">通常型</option>
+			<option value="放射型">放射型</option>
+			<option value="拡散型">拡散型</option>
+		</select> <select id="s_fue">
+			<option value="" selected="selected">旋律</option>
+			<option value="^621">桃黄赤</option>
+			<option value="^627">桃黄水</option>
+			<option value="^641">桃青赤</option>
+			<option value="^642">桃青黄</option>
+			<option value="^651">桃緑赤</option>
+			<option value="^652">桃緑黄</option>
+			<option value="^654">桃緑青</option>
+			<option value="^657">桃緑水</option>
+			<option value="^671">桃水赤</option>
+			<option value="^674">桃水青</option>
+			<option value="^321">白黄赤</option>
+			<option value="^327">白黄水</option>
+			<option value="^341">白青赤</option>
+			<option value="^342">白青黄</option>
+			<option value="^351">白緑赤</option>
+			<option value="^352">白緑黄</option>
+			<option value="^354">白緑青</option>
+			<option value="^357">白緑水</option>
+			<option value="^371">白水赤</option>
+			<option value="^374">白水青</option>
+		</select>
+			<span id="s_yumi_G">
+			<select id="s_tame">
+				<option value="1">タメ１</option>
+				<option value="2">タメ２</option>
+				<option value="3" selected="selected">タメ３</option>
+				<option value="4">タメ４</option>
+			</select>
+			<select id="s_ya">
+				<option value="" selected="selected">-</option>
+				<option value="連射">連射</option>
+				<option value="拡散">拡散</option>
+				<option value="貫通">貫通</option>
+			</select>
+			</span><span id="s_gun_G">装：
+			<select id="s_reload">
+				<option value="0" selected="selected">遅い</option>
+				<option value="1">やや遅</option>
+				<option value="2">普通</option>
+				<option value="3">やや速</option>
+				<option value="4">速い</option>
+			</select>
+			反：
+			<select id="s_kick">
+				<option value="0">最大</option>
+				<option value="2" selected="selected">中</option>
+				<option value="3">やや小</option>
+				<option value="4">小</option>
+			</select>
+		</span></td>
+		<td style="width:2em;" class="t">攻撃<br>
+			<small>slot</small>
+		</td>
+		<td style="width:2.5em;" id="d_att"><br></td>
+		<td style="width:2em;" class="t">属性</td>
+		<td style="width:4em;" id="d_zoku"><br></td>
+		<td style="width:2em;" class="t">会心</td>
+		<td style="width:2em;" id="d_cri"><br></td>
+		<td style="width:1em;" class="t">諸<br> 元</td>
+		<td style="width:16.5em;font-size:80%;"><span id="d_spec"><br>
+			</span> <select id="c_sinka" style="display:none"> </select></td>
+		<td style="width:6em;font-size:80%;" id="d_hr"><br></td>
+	</tr>
+</table>
+<table width="900" border="2">
+	<tr>
+		<td style="width:4em;" class="t">条件設定</td>
+		<td style="width:4em;"><input type="button" id="c_Style" value="地の型"></td>
+		<td style="width:27.5em;" id="gr_ken"> 斬れ味： <select id="c_sharp">
+			<option value="7">空|1.6倍</option>
+			<option value="6">紫|1.5倍</option>
+			<option value="5">白|1.4倍</option>
+			<option value="4">青|1.25倍</option>
+			<option value="3" selected="selected">緑|1.125倍</option>
+			<option value="2">黄|1.0倍</option>
+			<option value="1">橙|0.75倍</option>
+			<option value="0">赤|0.5倍</option>
+		</select> 斬り方： <select id="c_kiri">
+			<option value="30">始め|0.3倍</option>
+			<option value="100" selected="selected">中間|1.0倍</option>
+			<option value="50">終り|0.5倍</option>
+		</select> 剣晶： <select id="c_kensyo">
+			<option value="0">なし</option>
+			<option value="91">爆撃+1</option>
+			<option value="92">爆撃+2</option>
+			<option value="93">爆撃+3</option>
+			<option value="11">火炎+1</option>
+			<option value="12">火炎+2</option>
+			<option value="13">火炎+3</option>
+			<option value="21">水激+1</option>
+			<option value="22">水激+2</option>
+			<option value="23">水激+3</option>
+			<option value="51">氷結+1</option>
+			<option value="52">氷結+2</option>
+			<option value="53">氷結+3</option>
+			<option value="31">雷神+1</option>
+			<option value="32">雷神+2</option>
+			<option value="33">雷神+3</option>
+			<option value="41">龍王+1</option>
+			<option value="42">龍王+2</option>
+			<option value="43">龍王+3</option>
+			<option value="61">猛毒+1</option>
+			<option value="62">猛毒+2</option>
+			<option value="63">猛毒+3</option>
+			<option value="71">麻痺+1</option>
+			<option value="72">麻痺+2</option>
+			<option value="73">麻痺+3</option>
+			<option value="81">睡眠+1</option>
+			<option value="82">睡眠+2</option>
+			<option value="83">睡眠+3</option>
+			<option value="A1">強撃</option>
+		</select></td>
+		<td style="width:27.5em;" id="gr_gun"> 弾： <select id="c_tama" style="width:12em;">
+			<option value="">---------------</option>
+		</select> <select id="c_ya"> </select></td>
+		<td style="width:17em;"><span id="c_mei"></span> <select id="c_betu">
+			<option value="0" selected="selected">なし</option>
+		</select> <span id="c_mei2"></span> <select id="c_betu2">
+			<option value="0" selected="selected">なし</option>
+		</select></td>
+	</tr>
+</table>
+<table width="900" border="2">
+	<tr>
+		<td style="width:4em;" class="t" rowspan="4">攻撃力<br> 補正</td>
+		<td style="width:2.5em;" class="t">所持</td>
+		<td><label for="c_gohu"> <input type="checkbox" name="c_gohu" id="c_gohu" value="6"> 力の護符[+6]</label>
+			<label for="c_tume"> <input type="checkbox" name="c_tume" id="c_tume" value="9"> 力の爪[+9]</label>
+			<span class="box">死亡迄</span> <select id="c_mesi">
+				<option value="0" selected="selected">飯/薬</option>
+				<option value="3">飯小/鬼人薬･弾|+3</option>
+				<option value="5">飯大/鬼人薬G　|+5</option>
+				<option value="10">SR飯中　　　　|+10</option>
+				<option value="15">SR飯大　　　　|+15</option>
+			</select> <span class="box">その他</span> <label for="c_fw">
+				<input type="checkbox" name="c_fw" id="c_fw"> ﾌｨｰﾁｬｰ</label> <select id="c_mission">
+				<option value="0" selected="selected">ﾐｯｼｮﾝ</option>
+				<option value="1">第1弾</option>
+				<option value="2">第2弾</option>
+				<option value="3">第3弾</option>
+				<option value="4">第4弾</option>
+				<option value="5">第5弾</option>
+				<option value="6">第6弾</option>
+				<option value="7">第7弾</option>
+				<option value="8">第8弾</option>
+				<option value="9">第9弾</option>
+				<option value="10">第10弾</option>
+				<option value="11">第11弾</option>
+				<option value="12">第12弾</option>
+				<option value="13">第13弾</option>
+				<option value="14">第14弾</option>
+				<option value="15">第15弾</option>
+				<option value="16">第16弾</option>
+				<option value="17">第17弾</option>
+				<option value="18">第18弾</option>
+				<option value="19">第19弾</option>
+				<option value="20">第20弾</option>
+				<option value="21">第21弾</option>
+				<option value="22">第22弾</option>
+				<option value="23">第23弾</option>
+				<option value="24">第24弾</option>
+				<option value="25">第25弾</option>
+				<option value="26">第26弾</option>
+				<option value="27">第27弾</option>
+				<option value="28">第28弾</option>
+				<option value="29">第29弾</option>
+				<option value="30">第30弾</option>
+				<option value="31">第31弾</option>
+				<option value="32">第32弾</option>
+				<option value="33">第33弾</option>
+				<option value="34">第34弾</option>
+				<option value="35">第35弾</option>
+				<option value="36">第36弾</option>
+				<option value="37">第37弾</option>
+				<option value="38">第38弾</option>
+				<option value="39">第39弾</option>
+				<option value="40">第40弾</option>
+				<option value="41">第41弾</option>
+				<option value="42">第42弾</option>
+				<option value="43">第43弾</option>
+				<option value="44">第44弾</option>
+				<option value="45">第45弾</option>
+				<option value="46">第46弾</option>
+				<option value="47">第47弾</option>
+				<option value="48">第48弾</option>
+				<option value="49">第49弾</option>
+				<option value="50">第50弾</option>
+				<option value="51">第51弾</option>
+				<option value="52">第52弾</option>
+				<option value="53">第53弾</option>
+				<option value="54">第54弾</option>
+				<option value="55">第55弾</option>
+				<option value="56">第56弾</option>
+				<option value="57">第57弾</option>
+				<option value="58">第58弾</option>
+				<option value="59">第59弾</option>
+				<option value="60">第60弾</option>
+				<option value="61">第61弾</option>
+				<option value="62">第62弾</option>
+				<option value="63">第63弾</option>
+				<option value="64">第64弾</option>
+				<option value="65">第65弾</option>
+				<option value="66">第66弾</option>
+				<option value="67">第67弾</option>
+				<option value="68">第68弾</option>
+				<option value="69">第69弾</option>
+				<option value="70">第70弾</option>
+				<option value="71">第71弾</option>
+				<option value="72">第72弾</option>
+				<option value="73">第73弾</option>
+				<option value="74">第74弾</option>
+				<option value="75">第75弾</option>
+				<option value="76">第76弾</option>
+				<option value="77">第77弾</option>
+				<option value="78">第78弾</option>
+				<option value="79">第79弾</option>
+				<option value="80">第80弾</option>
+				<option value="81">第81弾</option>
+				<option value="82">第82弾</option>
+				<option value="83">第83弾</option>
+				<option value="84">第84弾</option>
+				<option value="85">第85弾</option>
+				<option value="86">第86弾</option>
+				<option value="87">第87弾</option>
+				<option value="88">第88弾</option>
+				<option value="89">第89弾</option>
+				<option value="90">第90弾</option>
+				<option value="91">第91弾</option>
+				<option value="92">第92弾</option>
+				<option value="93">第93弾</option>
+				<option value="94">第94弾</option>
+				<option value="95">第95弾</option>
+				<option value="96">第96弾</option>
+				<option value="97">第97弾</option>
+				<option value="98">第98弾</option>
+				<option value="99">第99弾</option>
+				<option value="100">第100弾</option>
+				<option value="101">第101弾</option>
+				<option value="102">第102弾</option>
+				<option value="103">第103弾</option>
+				<option value="104">第104弾</option>
+				<option value="105">第105弾</option>
+				<option value="106">第106弾</option>
+				<option value="107">第107弾</option>
+				<option value="108">第108弾</option>
+				<option value="109">第109弾</option>
+				<option value="110">第110弾</option>
+				<option value="111">第111弾</option>
+				<option value="112">第112弾</option>
+				<option value="113">第113弾</option>
+				<option value="114">第114弾</option>
+				<option value="115">第115弾</option>
+				<option value="116">第116弾</option>
+				<option value="117">第117弾</option>
+				<option value="118">第118弾</option>
+				<option value="119">第119弾</option>
+				<option value="120">第120弾</option>
+				<option value="121">第121弾</option>
+				<option value="122">第122弾</option>
+				<option value="123">第123弾</option>
+				<option value="124">第124弾</option>
+				<option value="125">第125弾</option>
+				<option value="126">第126弾</option>
+				<option value="127">第127弾</option>
+				<option value="128">第128弾</option>
+				<option value="129">第129弾</option>
+				<option value="130">第130弾</option>
+				<option value="131">第131弾</option>
+				<option value="132">第132弾</option>
+				<option value="133">第133弾</option>
+				<option value="134">第134弾</option>
+				<option value="135">第135弾</option>
+				<option value="136">第136弾</option>
+				<option value="137">第137弾</option>
+				<option value="138">第138弾</option>
+				<option value="139">第139弾</option>
+				<option value="140">第140弾</option>
+				<option value="141">第141弾</option>
+				<option value="142">第142弾</option>
+				<option value="143">第143弾</option>
+				<option value="144">第144弾</option>
+				<option value="145">第145弾</option>
+				<option value="146">第146弾</option>
+				<option value="147">第147弾</option>
+				<option value="148">第148弾</option>
+				<option value="149">第149弾</option>
+				<option value="150">第150弾</option>
+				<option value="151">第151弾</option>
+				<option value="152">第152弾</option>
+				<option value="153">第153弾</option>
+				<option value="154">第154弾</option>
+				<option value="155">第155弾</option>
+				<option value="156">第156弾</option>
+				<option value="157">第157弾</option>
+				<option value="158">第158弾</option>
+				<option value="159">第159弾</option>
+				<option value="160">第160弾</option>
+				<option value="161">第161弾</option>
+				<option value="162">第162弾</option>
+				<option value="163">第163弾</option>
+				<option value="164">第164弾</option>
+				<option value="165">第165弾</option>
+				<option value="166">第166弾</option>
+				<option value="167">第167弾</option>
+				<option value="168">第168弾</option>
+				<option value="169">第169弾</option>
+				<option value="170">第170弾</option>
+			</select></td>
+	</tr>
+	<tr>
+		<td class="t">時限</td>
+		<td><select id="c_tane">
+			<option value="0" selected="selected">種/笛/丸薬</option>
+			<option value="10">怪力の種/鬼人笛|+10</option>
+			<option value="25">怪力の丸薬　　 |+25</option>
+		</select> <select id="c_honki">
+			<option value="0" selected="selected">本気飲料</option>
+			<option value="1">本気[属性]1.1倍</option>
+			<option value="2">本気[会心]+30</option>
+		</select> <span class="box">旋律</span> <select id="c_fueAT">
+			<option value="100" selected="selected">攻撃旋律</option>
+			<option value="115">攻小　|1.15倍</option>
+			<option value="120">攻追小|1.2倍</option>
+			<option value="120">攻大　|1.2倍</option>
+			<option value="130">攻追大|1.3倍</option>
+		</select> <label for="c_fueZK"> <input type="checkbox" name="c_fueZK" id="c_fueZK" value="1"> 属性旋律[1.1倍]</label>
+		</td>
+	</tr>
+	<tr>
+		<td class="t" rowspan="2">ｽｷﾙ</td>
+		<td><select id="c_attUp">
+			<option value="0" selected="selected">攻撃力</option>
+			<option value="5">攻撃小|+ 5</option>
+			<option value="10">攻撃中|+10</option>
+			<option value="20">攻撃大|+20</option>
+			<option value="30">攻撃特|+30</option>
+			<option value="50">攻撃絶|+50</option>
+		</select> <select id="c_criUp">
+			<option value="0" selected="selected">達人</option>
+			<option value="10">見切+1|+10%</option>
+			<option value="20">見切+2|+20%</option>
+			<option value="30">見切+3|+30%</option>
+			<option value="40">見切+4|+40%</option>
+			<option value="50">見切+5|+50%</option>
+		</select> <select id="c_soko">
+			<option value="10" selected="selected">底力</option>
+			<option value="15">火事場+2|1.5倍</option>
+			<option value="7">心配性　|0.7倍</option>
+		</select> <label for="c_shoot"> <input type="checkbox" name="c_shoot" id="c_shoot" value="1"> 狙い撃ち</label>
+			<label for="c_tamaUp"> <input type="checkbox" name="c_tamaUp" id="c_tamaUp" value="1"> 弾強化</label>
+			<select id="c_waza">
+				<option value="100" selected="selected">剣銃弓技</option>
+				<option value="120">SR剣聖|1.2倍</option>
+				<option value="110">SR皆伝|1.1倍</option>
+				<option value="80">SR未熟|0.8倍</option>
+			</select> <select id="c_sr">
+				<option value="0" selected="selected">SR</option>
+				<option value="5">会心+5%</option>
+				<option value="6">会心+6%</option>
+				<option value="7">会心+7%</option>
+				<option value="8">会心+8%</option>
+				<option value="9">会心+9%</option>
+				<option value="10">会心+10%</option>
+				<option value="11">会心+11%</option>
+				<option value="12">会心+12%</option>
+				<option value="13">会心+13%</option>
+				<option value="14">会心+14%</option>
+				<option value="15">会心+15%</option>
+				<option value="20">会心+20%</option>
+			</select> <select id="c_tr">
+				<option value="0" selected="selected">天嵐</option>
+				<option value="15">1部位</option>
+				<option value="30">2部位</option>
+				<option value="45">3部位</option>
+				<option value="60">4部位</option>
+				<option value="80">5部位</option>
+			</select></td>
+	</tr>
+	<tr>
+		<td><select id="c_zkUp">
+			<option value="10" selected="selected">○属性強化</option>
+			<option value="11">属性小|1.1倍</option>
+			<option value="12">属性大|1.2倍</option>
+		</select> <select id="c_zkUp2">
+			<option value="10" selected="selected">属性攻撃</option>
+			<option value="11">属性強化|1.1倍</option>
+			<option value="9">属性弱化|0.9倍</option>
+		</select> <select id="c_garou">
+			<option value="0" selected="selected">餓狼</option>
+			<option value="1">餓狼+1</option>
+			<option value="2">餓狼+2</option>
+		</select> <select id="c_guns">
+			<option value="0" selected="selected">砲術?</option>
+			<option value="1">砲術師</option>
+			<option value="2">砲術王</option>
+			<option value="3">砲術神</option>
+		</select> <label for="c_izyou"> <input type="checkbox" name="c_izyou" id="c_izyou" value="1"> 状態異常強化</label>
+			<label for="c_kizuna"> <input type="checkbox" name="c_kizuna" id="c_kizuna" value="1"> 絆
+				<small>男</small>
+				[+5]</label> <select id="c_karyudo">
+				<option value="1000" selected="selected">狩人珠</option>
+				<option value="1010">○術小|1.01倍</option>
+				<option value="1025">○術中|1.025倍</option>
+				<option value="1050">○術大|1.05倍</option>
+				<option value="1100">暴れ撃|1.1倍</option>
+			</select></td>
+	</tr>
+</table>
+<table width="795" border="2">
+	<tr class="ac">
+		<td style="width:6.5em;" class="t">表示攻撃力<br> (武器倍率)</td>
+		<td style="width:3em;">
+			<div id="g_att"><br>
+			</div>
+			<div id="g_attB"><br>
+			</div>
+		</td>
+		<td style="width:2.2em;" class="t">表示<br> 属性</td>
+		<td style="width:4em;" id="g_zoku"><br></td>
+		<td style="width:2.2em;" class="t">表示<br> 会心</td>
+		<td style="width:3em;" id="g_cri"><br></td>
+		<td style="width:4em;" class="fss">攻撃値<br> (内部)</td>
+		<td style="width:5em;" class="fss" id="g_attN"><br></td>
+		<td style="width:4em;" class="fss">属性値<br> (内部)</td>
+		<td style="width:5em;" class="fss" id="g_zokuN"><br></td>
+		<td style="width:2.5em;" class="t">会心</td>
+		<td><input type="radio" name="c_cri" value="0"> なし <input type="radio" name="c_cri" value="1"> あり
+			<input type="radio" name="c_cri" value="2" checked="checked"> 平均
+		</td>
+	</tr>
+</table>
+<table width="100%" border="2" cellspacing="1" class="damage">
+	<col style="width:5em;" class="dai">
+	<col span="11" style="width:8%;">
+	<tr>
+		<th colspan="12">ダメージ(<span class="fs">数回Hitの攻撃は単発Hit分</span>)
+			<input type="radio" name="c_gou" value="1" checked="checked"> 合計表示
+			<input type="radio" name="c_gou" value="2"> 分割表示(物理+属性)<span class="fss">※下の注意書き参照</span></th>
+	</tr>
+	<tr style="height:30px;">
+		<th id="d00"><br></th>
+		<th id="d01"><br></th>
+		<th id="d02"><br></th>
+		<th id="d03"><br></th>
+		<th id="d04"><br></th>
+		<th id="d05"><br></th>
+		<th id="d06"><br></th>
+		<th id="d07"><br></th>
+		<th id="d08"><br></th>
+		<th id="d09"><br></th>
+		<th id="d010"><br></th>
+		<th id="d011"><br></th>
+	</tr>
+	<tr style="height:25px;">
+		<td id="d10"><br></td>
+		<td id="d11"><br></td>
+		<td id="d12"><br></td>
+		<td id="d13"><br></td>
+		<td id="d14"><br></td>
+		<td id="d15"><br></td>
+		<td id="d16"><br></td>
+		<td id="d17"><br></td>
+		<td id="d18"><br></td>
+		<td id="d19"><br></td>
+		<td id="d110"><br></td>
+		<td id="d111"><br></td>
+	</tr>
+	<tr style="height:25px;">
+		<td id="d20"><br></td>
+		<td id="d21"><br></td>
+		<td id="d22"><br></td>
+		<td id="d23"><br></td>
+		<td id="d24"><br></td>
+		<td id="d25"><br></td>
+		<td id="d26"><br></td>
+		<td id="d27"><br></td>
+		<td id="d28"><br></td>
+		<td id="d29"><br></td>
+		<td id="d210"><br></td>
+		<td id="d211"><br></td>
+	</tr>
+	<tr style="height:25px;">
+		<td id="d30"><br></td>
+		<td id="d31"><br></td>
+		<td id="d32"><br></td>
+		<td id="d33"><br></td>
+		<td id="d34"><br></td>
+		<td id="d35"><br></td>
+		<td id="d36"><br></td>
+		<td id="d37"><br></td>
+		<td id="d38"><br></td>
+		<td id="d39"><br></td>
+		<td id="d310"><br></td>
+		<td id="d311"><br></td>
+	</tr>
+	<tr style="height:25px;">
+		<td id="d40"><br></td>
+		<td id="d41"><br></td>
+		<td id="d42"><br></td>
+		<td id="d43"><br></td>
+		<td id="d44"><br></td>
+		<td id="d45"><br></td>
+		<td id="d46"><br></td>
+		<td id="d47"><br></td>
+		<td id="d48"><br></td>
+		<td id="d49"><br></td>
+		<td id="d410"><br></td>
+		<td id="d411"><br></td>
+	</tr>
+	<tr style="height:25px;">
+		<td id="d50"><br></td>
+		<td id="d51"><br></td>
+		<td id="d52"><br></td>
+		<td id="d53"><br></td>
+		<td id="d54"><br></td>
+		<td id="d55"><br></td>
+		<td id="d56"><br></td>
+		<td id="d57"><br></td>
+		<td id="d58"><br></td>
+		<td id="d59"><br></td>
+		<td id="d510"><br></td>
+		<td id="d511"><br></td>
+	</tr>
+	<tr style="height:25px;">
+		<td id="d60"><br></td>
+		<td id="d61"><br></td>
+		<td id="d62"><br></td>
+		<td id="d63"><br></td>
+		<td id="d64"><br></td>
+		<td id="d65"><br></td>
+		<td id="d66"><br></td>
+		<td id="d67"><br></td>
+		<td id="d68"><br></td>
+		<td id="d69"><br></td>
+		<td id="d610"><br></td>
+		<td id="d611"><br></td>
+	</tr>
+	<tr style="height:25px;">
+		<td id="d70"><br></td>
+		<td id="d71"><br></td>
+		<td id="d72"><br></td>
+		<td id="d73"><br></td>
+		<td id="d74"><br></td>
+		<td id="d75"><br></td>
+		<td id="d76"><br></td>
+		<td id="d77"><br></td>
+		<td id="d78"><br></td>
+		<td id="d79"><br></td>
+		<td id="d710"><br></td>
+		<td id="d711"><br></td>
+	</tr>
+</table>
+<table cellspacing="0" cellpadding="0">
+	<tr>
+		<td style="vertical-align:top;">
+			<table border="1" cellspacing="0" class="niku" style="width:320px;table-layout:fixed;">
+				<col style="width:4em;" class="dai">
+				<col span="8" class="suu">
+				<tr>
+					<th colspan="9">肉質</th>
+				</tr>
+				<tr>
+					<th>部位</th>
+					<th>斬</th>
+					<th>打</th>
+					<th>弾</th>
+					<th>火</th>
+					<th>水</th>
+					<th>雷</th>
+					<th>龍</th>
+					<th>氷</th>
+				</tr>
+				<tr>
+					<td id="m00"><br></td>
+					<td id="m10"><br></td>
+					<td id="m20"><br></td>
+					<td id="m30"><br></td>
+					<td id="m40"><br></td>
+					<td id="m50"><br></td>
+					<td id="m60"><br></td>
+					<td id="m70"><br></td>
+					<td id="m80"><br></td>
+				</tr>
+				<tr>
+					<td id="m01"><br></td>
+					<td id="m11"><br></td>
+					<td id="m21"><br></td>
+					<td id="m31"><br></td>
+					<td id="m41"><br></td>
+					<td id="m51"><br></td>
+					<td id="m61"><br></td>
+					<td id="m71"><br></td>
+					<td id="m81"><br></td>
+				</tr>
+				<tr>
+					<td id="m02"><br></td>
+					<td id="m12"><br></td>
+					<td id="m22"><br></td>
+					<td id="m32"><br></td>
+					<td id="m42"><br></td>
+					<td id="m52"><br></td>
+					<td id="m62"><br></td>
+					<td id="m72"><br></td>
+					<td id="m82"><br></td>
+				</tr>
+				<tr>
+					<td id="m03"><br></td>
+					<td id="m13"><br></td>
+					<td id="m23"><br></td>
+					<td id="m33"><br></td>
+					<td id="m43"><br></td>
+					<td id="m53"><br></td>
+					<td id="m63"><br></td>
+					<td id="m73"><br></td>
+					<td id="m83"><br></td>
+				</tr>
+				<tr>
+					<td id="m04"><br></td>
+					<td id="m14"><br></td>
+					<td id="m24"><br></td>
+					<td id="m34"><br></td>
+					<td id="m44"><br></td>
+					<td id="m54"><br></td>
+					<td id="m64"><br></td>
+					<td id="m74"><br></td>
+					<td id="m84"><br></td>
+				</tr>
+				<tr>
+					<td id="m05"><br></td>
+					<td id="m15"><br></td>
+					<td id="m25"><br></td>
+					<td id="m35"><br></td>
+					<td id="m45"><br></td>
+					<td id="m55"><br></td>
+					<td id="m65"><br></td>
+					<td id="m75"><br></td>
+					<td id="m85"><br></td>
+				</tr>
+				<tr>
+					<td id="m06"><br></td>
+					<td id="m16"><br></td>
+					<td id="m26"><br></td>
+					<td id="m36"><br></td>
+					<td id="m46"><br></td>
+					<td id="m56"><br></td>
+					<td id="m66"><br></td>
+					<td id="m76"><br></td>
+					<td id="m86"><br></td>
+				</tr>
+			</table>
+		</td>
+		<td style="font-size:65%"><pre>
+<strong>計算式：</strong>基本武器倍率 ＝ 攻撃力÷（大剣/太刀：4.8　片手剣/双剣：1.4　ハンマー/狩猟笛：5.2
+　　　　　　　　　　　　　　　　　ランス/ガンランス：2.3　ボウガン/弓：1.2）
+　　　　武器倍率 ＝（基本武器倍率＋力の護符＋力の爪＋食事・鬼人薬＋鬼人笛・怪力種＋攻撃力UPｽｷﾙ）×底力×旋律効果
+　　　　　　会心は青ゲージで +5％、白紫ゲージで +10％（武器の会心が 0％の場合は増加なし）
+　　　　最終ダメージ ＝（物理ダメージ＋属性ダメージ）×全体防御率×怒り倍率　[灰:弾かれ　緑:ﾋｯﾄｽﾄｯﾌﾟ小　青色:ﾋｯﾄｽﾄｯﾌﾟ大]
+　　　　　　　　　　　　<strong>※分割表示は、物理・属性それぞれで切捨て計算をするため、合計表示より低くなります</strong>
+<strong>?近接</strong>
+　物理ダメージ ＝ 武器倍率×モーション値×斬れ味倍率×斬り方×肉質×武器補正×会心(1.25 or 0.75)
+　属性ダメージ ＝ 属性値×斬れ味倍率（赤:0.25 橙:0.5 黄:0.75 緑:1.0 青:1.0625 白:1.125 紫:1.15）×肉質
+　ランスは斬・打属性それぞれで計算し効果の大きい方を適用
+　ガンランスの砲撃は、斬れ味レベルが１（橙）以下だと、爆発威力・火属性値とも 0.75 倍に低下
+<strong>?ボウガン</strong>
+　物理ダメージ ＝ 武器倍率×弾×距離修正×スキル×肉質×武器補正×会心(1.25 or 0.75)
+　属性ダメージ ＝ 属性値×肉質
+　固定ダメージ ＝ 固定
+　　速射対応の弾の威力は1/2で計算
+<strong>?弓</strong>
+　物理ダメージ ＝ 武器倍率×弓矢×溜め段階×距離修正×ビン有無×スキル×肉質×武器補正×会心(1.25 or 0.75)
+　属性ダメージ ＝ 属性値×溜め段階（1段階:0.5 2段階:0.75 3段階:1.0 4段階:1.25）×肉質
+　弓矢斬りは斬・打属性それぞれで計算し効果の大きい方を適用
+　状態異常ビンは溜め段階１で放った場合、属性値が半分に減少。剛種武器の場合は属性値が1.5倍になる
+</pre>
+		</td>
+	</tr>
+</table>
+<div id="m_W" style="position:absolute; top:8.2em; left:5em; width:50%; border:solid 2px black; background-color:snow; display:none;">
+	<input type="button" value="閉じる" id="m_WClose_B" style="height:1.5em;">
+	<hr>
+	<div id="m_WBody" style="height:99%; overflow:scroll; white-space:normal;padding-bottom:1em;"></div>
+</div>
+<div id="m_N" style="position:absolute; top:5.7em; left:17.5em; width:32em; height:2.5em; border:solid 2px black; background-color:snow; display:none;"> 攻撃:
+	<input id="i_att" style="width:2.5em;" value="0"> <span id="i_zoku_disp">無</span>:
+	<input id="i_zoku" style="width:1.6em;" value="0"> 会心 <input id="i_cri" style="width:2em;" value="0">
+	<input type="button" value="セット" id="i_set_B" style="height:1.5em;">
+
+	<div id="i_yumi"> ﾀﾒ1 <select id="i_ya1">
+		<option value="連射">連射</option>
+		<option value="拡散">拡散</option>
+		<option value="貫通">貫通</option>
+	</select> <select id="i_yaLv1">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select> ﾀﾒ2 <select id="i_ya2">
+		<option value="連射">連射</option>
+		<option value="拡散">拡散</option>
+		<option value="貫通">貫通</option>
+	</select> <select id="i_yaLv2">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select> ﾀﾒ3 <select id="i_ya3">
+		<option value="連射">連射</option>
+		<option value="拡散">拡散</option>
+		<option value="貫通">貫通</option>
+	</select> <select id="i_yaLv3">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select> ﾀﾒ4 <select id="i_ya4">
+		<option value="連射">連射</option>
+		<option value="拡散">拡散</option>
+		<option value="貫通">貫通</option>
+	</select> <select id="i_yaLv4">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select>
+	</div>
+</div>
+<script type="text/javascript" src="js/itemName.js"></script>
+<script type="text/javascript" src="js/DamageForm.js"></script>
+<script type="text/javascript" src="js/equip.js"></script>
+<script type="text/javascript" src="js/monster.js"></script>
+</body>
+</html>
