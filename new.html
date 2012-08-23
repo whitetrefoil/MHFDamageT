@@ -10,186 +10,188 @@
 	Now Loading...
 </div>
 <div id="wrapper">
-	<div id="weaponType">
-		<h2>武器種類</h2>
-		<ul>
-			<li><a href="javascript:void(0)">大剣</a></li>
-			<li><a href="javascript:void(0)">太刀</a></li>
-			<li><a href="javascript:void(0)">片手剣</a></li>
-			<li><a href="javascript:void(0)">双剣</a></li>
-			<li><a href="javascript:void(0)">ハンマー</a></li>
-			<li><a href="javascript:void(0)">狩猟笛</a></li>
-			<li><a href="javascript:void(0)">ランス</a></li>
-			<li><a href="javascript:void(0)">ガンランス</a></li>
-			<li><a href="javascript:void(0)">弓</a></li>
-			<li><a href="javascript:void(0)">ライトボウガン</a></li>
-			<li><a href="javascript:void(0)">ヘビィボウガン</a></li>
-		</ul>
-	</div>
-	<div id="activityWeapons">
-		<h2>活動</h2>
-		<ul>
-			<li><a href="javascript:void(0)">猟団</a></li>
-			<li><a href="javascript:void(0)">祭</a></li>
-			<li><a href="javascript:void(0)">韋駄天</a></li>
-			<li><a href="javascript:void(0)">ｲﾍﾞﾝﾄ</a></li>
-			<li><a href="javascript:void(0)">ｶﾌｪ</a></li>
-			<li><a href="javascript:void(0)">ｶﾞﾁｬ</a></li>
-			<li><a href="javascript:void(0)">ｷｯﾄ</a></li>
-			<li><a href="javascript:void(0)">ﾊﾟｯｹ</a></li>
-			<li><a href="javascript:void(0)">特典</a></li>
-		</ul>
-	</div>
-	<div id="monster">
-		<form name="monster">
-			<h2>対戦相手</h2>
-			<p>
-				<label>凄腕：<input type="checkbox" name="isExpert"></label>
-				<select name="name"></select>
-				<label>防御率：
-					<select name="defenceRate">
-						<option value="1.00" selected>なし:1.00</option>
-					</select>
-				</label>
-				<label>HC：
-					<select name="isHardcore" disabled>
-						<option value="" selected>なし</option>
-					</select>
-				</label>
-				<label>怒り：
-					<input type="checkbox" name="isAngry">
-				</label>
-			</p>
-		</form>
-	</div>
-	<div id="weapon">
-		<form name="weapon">
-			<h2>武器検索</h2>
-			<p>
-				<label id="weaponElement">属性：
-					<select name="element">
-						<option value="all" selected="selected">全て</option>
-						<option value="0">無</option>
-						<option value="1">火</option>
-						<option value="2">水</option>
-						<option value="3">雷</option>
-						<option value="4">龍</option>
-						<option value="5">氷</option>
-						<option value="6">毒</option>
-						<option value="7">麻痺</option>
-						<option value="8">睡眠</option>
-					</select>
-				</label>
-				<label id="weaponAmmoType">弾型：
-					<select name="ammoType" >
-						<option value="0">通常1</option>
-						<option value="1" selected="selected">通常2</option>
-						<option value="2">通常3</option>
-						<option value="3">貫通1</option>
-						<option value="4">貫通2</option>
-						<option value="5">貫通3</option>
-						<option value="6">散1</option>
-						<option value="7">散2</option>
-						<option value="8">散3</option>
-						<option value="9">徹甲1</option>
-						<option value="10">徹甲2</option>
-						<option value="11">徹甲3</option>
-						<option value="12">拡散1</option>
-						<option value="13">拡散2</option>
-						<option value="14">拡散3</option>
-						<option value="17">毒1</option>
-						<option value="18">毒2</option>
-						<option value="19">麻痺1</option>
-						<option value="20">麻痺2</option>
-						<option value="21">睡眠1</option>
-						<option value="22">睡眠2</option>
-						<option value="23">火炎</option>
-						<option value="24">水冷</option>
-						<option value="25">電撃</option>
-						<option value="26">氷結</option>
-						<option value="27">滅龍</option>
-					</select>
-				</label>
-				<label id="weaponOrderClose">順序：
-					<select name="orderClose">
-						<option value="0" selected="selected">名前</option>
-						<option value="1">攻撃</option>
-						<option value="2">属性</option>
-						<option value="3">会心</option>
-					</select>
-				</label>
-				<label id="weaponOrderRange">順序：
-					<select name="orderRange">
-						<option value="0" selected="selected">名前</option>
-						<option value="1">攻撃</option>
-						<option value="2">弾数</option>
-						<option value="3">会心</option>
-					</select>
-				</label>
-				<label>レア：
-					<select name="rare">
-						<option value="12" selected="selected">12</option>
-						<option value="11">11</option>
-						<option value="10">10</option>
-						<option value="9">9</option>
-						<option value="8">8</option>
-						<option value="7">7</option>
-						<option value="6">6</option>
-						<option value="5">5</option>
-						<option value="4">4</option>
-						<option value="3">3</option>
-						<option value="2">2</option>
-						<option value="1">1</option>
-					</select>まで
-				</label>
-				<label>スロット：
-					<select name="slot">
-						<option value="0" selected="selected">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-					</select>以上
-				</label>
-				<label>HR：
-					<select name="HR">
-						<option value="800" selected="selected">999</option>
-						<option value="100">499</option>
-						<option value="91">99</option>
-						<option value="81">90</option>
-						<option value="71">80</option>
-						<option value="61">70</option>
-						<option value="51">60</option>
-						<option value="48">50</option>
-						<option value="41">47</option>
-						<option value="38">40</option>
-						<option value="31">37</option>
-						<option value="22">30</option>
-						<option value="17">21</option>
-						<option value="15">16</option>
-						<option value="11">14</option>
-						<option value="8">10</option>
-						<option value="5">7</option>
-						<option value="1">4</option>
-					</select>以下
-				</label>
-				<label>ラスタ：
-					<select name="luster">
-						<option value="0" selected="selected">12</option>
-						<option value="11">11</option>
-						<option value="10">10</option>
-						<option value="9">9</option>
-						<option value="8">8</option>
-						<option value="7">7</option>
-						<option value="6">6</option>
-						<option value="5">5</option>
-						<option value="4">4</option>
-						<option value="3">3</option>
-						<option value="2">2</option>
-						<option value="1">1</option>
-					</select>以下
-				</label>
-			</p>
-		</form>
+	<div id="pageContent">
+		<div id="weaponType">
+			<h2>武器種類</h2>
+			<ul>
+				<li><a href="javascript:void(0)">大剣</a></li>
+				<li><a href="javascript:void(0)">太刀</a></li>
+				<li><a href="javascript:void(0)">片手剣</a></li>
+				<li><a href="javascript:void(0)">双剣</a></li>
+				<li><a href="javascript:void(0)">ハンマー</a></li>
+				<li><a href="javascript:void(0)">狩猟笛</a></li>
+				<li><a href="javascript:void(0)">ランス</a></li>
+				<li><a href="javascript:void(0)">ガンランス</a></li>
+				<li><a href="javascript:void(0)">弓</a></li>
+				<li><a href="javascript:void(0)">ライトボウガン</a></li>
+				<li><a href="javascript:void(0)">ヘビィボウガン</a></li>
+			</ul>
+		</div>
+		<div id="activityWeapons">
+			<h2>活動</h2>
+			<ul>
+				<li><a href="javascript:void(0)">猟団</a></li>
+				<li><a href="javascript:void(0)">祭</a></li>
+				<li><a href="javascript:void(0)">韋駄天</a></li>
+				<li><a href="javascript:void(0)">ｲﾍﾞﾝﾄ</a></li>
+				<li><a href="javascript:void(0)">ｶﾌｪ</a></li>
+				<li><a href="javascript:void(0)">ｶﾞﾁｬ</a></li>
+				<li><a href="javascript:void(0)">ｷｯﾄ</a></li>
+				<li><a href="javascript:void(0)">ﾊﾟｯｹ</a></li>
+				<li><a href="javascript:void(0)">特典</a></li>
+			</ul>
+		</div>
+		<div id="monster">
+			<form name="monster">
+				<h2>対戦相手</h2>
+				<p>
+					<label>凄腕：<input type="checkbox" name="isExpert"></label>
+					<select name="name"></select>
+					<label>防御率：
+						<select name="defenceRate">
+							<option value="1.00" selected>なし:1.00</option>
+						</select>
+					</label>
+					<label>HC：
+						<select name="isHardcore" disabled>
+							<option value="" selected>なし</option>
+						</select>
+					</label>
+					<label>怒り：
+						<input type="checkbox" name="isAngry">
+					</label>
+				</p>
+			</form>
+		</div>
+		<div id="weapon">
+			<form name="weapon">
+				<h2>武器検索</h2>
+				<p>
+					<label id="weaponElement">属性：
+						<select name="element">
+							<option value="all" selected="selected">全て</option>
+							<option value="0">無</option>
+							<option value="1">火</option>
+							<option value="2">水</option>
+							<option value="3">雷</option>
+							<option value="4">龍</option>
+							<option value="5">氷</option>
+							<option value="6">毒</option>
+							<option value="7">麻痺</option>
+							<option value="8">睡眠</option>
+						</select>
+					</label>
+					<label id="weaponAmmoType">弾型：
+						<select name="ammoType" >
+							<option value="0">通常1</option>
+							<option value="1" selected="selected">通常2</option>
+							<option value="2">通常3</option>
+							<option value="3">貫通1</option>
+							<option value="4">貫通2</option>
+							<option value="5">貫通3</option>
+							<option value="6">散1</option>
+							<option value="7">散2</option>
+							<option value="8">散3</option>
+							<option value="9">徹甲1</option>
+							<option value="10">徹甲2</option>
+							<option value="11">徹甲3</option>
+							<option value="12">拡散1</option>
+							<option value="13">拡散2</option>
+							<option value="14">拡散3</option>
+							<option value="17">毒1</option>
+							<option value="18">毒2</option>
+							<option value="19">麻痺1</option>
+							<option value="20">麻痺2</option>
+							<option value="21">睡眠1</option>
+							<option value="22">睡眠2</option>
+							<option value="23">火炎</option>
+							<option value="24">水冷</option>
+							<option value="25">電撃</option>
+							<option value="26">氷結</option>
+							<option value="27">滅龍</option>
+						</select>
+					</label>
+					<label id="weaponOrderClose">順序：
+						<select name="orderClose">
+							<option value="0" selected="selected">名前</option>
+							<option value="1">攻撃</option>
+							<option value="2">属性</option>
+							<option value="3">会心</option>
+						</select>
+					</label>
+					<label id="weaponOrderRange">順序：
+						<select name="orderRange">
+							<option value="0" selected="selected">名前</option>
+							<option value="1">攻撃</option>
+							<option value="2">弾数</option>
+							<option value="3">会心</option>
+						</select>
+					</label>
+					<label>レア：
+						<select name="rare">
+							<option value="12" selected="selected">12</option>
+							<option value="11">11</option>
+							<option value="10">10</option>
+							<option value="9">9</option>
+							<option value="8">8</option>
+							<option value="7">7</option>
+							<option value="6">6</option>
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>まで
+					</label>
+					<label>スロット：
+						<select name="slot">
+							<option value="0" selected="selected">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>以上
+					</label>
+					<label>HR：
+						<select name="HR">
+							<option value="800" selected="selected">999</option>
+							<option value="100">499</option>
+							<option value="91">99</option>
+							<option value="81">90</option>
+							<option value="71">80</option>
+							<option value="61">70</option>
+							<option value="51">60</option>
+							<option value="48">50</option>
+							<option value="41">47</option>
+							<option value="38">40</option>
+							<option value="31">37</option>
+							<option value="22">30</option>
+							<option value="17">21</option>
+							<option value="15">16</option>
+							<option value="11">14</option>
+							<option value="8">10</option>
+							<option value="5">7</option>
+							<option value="1">4</option>
+						</select>以下
+					</label>
+					<label>ラスタ：
+						<select name="luster">
+							<option value="0" selected="selected">12</option>
+							<option value="11">11</option>
+							<option value="10">10</option>
+							<option value="9">9</option>
+							<option value="8">8</option>
+							<option value="7">7</option>
+							<option value="6">6</option>
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>以下
+					</label>
+				</p>
+			</form>
+		</div>
 	</div>
 </div>
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
