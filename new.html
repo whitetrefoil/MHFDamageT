@@ -265,7 +265,97 @@
 						<option selected>--- Loading ---</option>
 					</select>
 				</label>
-				<label class="range-weapon-prop"></label>
+				<label>秘伝：
+					<select name="attackType">
+						<option value="1">地の型</option>
+						<option value="2">天の型</option>
+						<option value="3">嵐の型</option>
+					</select>
+				</label>
+			</form>
+		</div>
+		<div id="weaponStatus">
+			<dl>
+				<dt>攻撃</dt>
+				<dd></dd>
+			</dl>
+			<dl>
+				<dt>スロット</dt>
+				<dd></dd>
+			</dl>
+			<dl>
+				<dt>属性</dt>
+				<dd></dd>
+			</dl>
+			<dl>
+				<dt>会心</dt>
+				<dd></dd>
+			</dl>
+			<dl>
+				<dt>諸元</dt>
+				<dd></dd>
+			</dl>
+		</div>
+		<div id="weaponParam">
+			<form name="weaponParam">
+				<label class="close-weapon-prop">斬れ味：
+					<select name="sharpness">
+						<option value="7">空|1.6倍</option>
+						<option value="6">紫|1.5倍</option>
+						<option value="5">白|1.4倍</option>
+						<option value="4">青|1.25倍</option>
+						<option value="3" selected="selected">緑|1.125倍</option>
+						<option value="2">黄|1.0倍</option>
+						<option value="1">橙|0.75倍</option>
+						<option value="0">赤|0.5倍</option>
+					</select>
+				</label>
+				<label class="close-weapon-prop">斬り方：
+					<select name="timing">
+						<option value="30">始め|0.3倍</option>
+						<option value="100" selected="selected">中間|1.0倍</option>
+						<option value="50">終り|0.5倍</option>
+					</select>
+				</label>
+				<label class="close-weapon-prop">剣晶：
+					<select name="catalyst">
+						<option value="0">なし</option>
+						<option value="91">爆撃+1</option>
+						<option value="92">爆撃+2</option>
+						<option value="93">爆撃+3</option>
+						<option value="11">火炎+1</option>
+						<option value="12">火炎+2</option>
+						<option value="13">火炎+3</option>
+						<option value="21">水激+1</option>
+						<option value="22">水激+2</option>
+						<option value="23">水激+3</option>
+						<option value="51">氷結+1</option>
+						<option value="52">氷結+2</option>
+						<option value="53">氷結+3</option>
+						<option value="31">雷神+1</option>
+						<option value="32">雷神+2</option>
+						<option value="33">雷神+3</option>
+						<option value="41">龍王+1</option>
+						<option value="42">龍王+2</option>
+						<option value="43">龍王+3</option>
+						<option value="61">猛毒+1</option>
+						<option value="62">猛毒+2</option>
+						<option value="63">猛毒+3</option>
+						<option value="71">麻痺+1</option>
+						<option value="72">麻痺+2</option>
+						<option value="73">麻痺+3</option>
+						<option value="81">睡眠+1</option>
+						<option value="82">睡眠+2</option>
+						<option value="83">睡眠+3</option>
+						<option value="A1">強撃</option>
+					</select>
+				</label>
+				<label class="close-weapon-prop">刃部：
+					<select name="bladePart">
+						<option value="0">なし</option>
+						<option value="1">中腹</option>
+					</select>
+				</label>
 			</form>
 		</div>
 	</div>
