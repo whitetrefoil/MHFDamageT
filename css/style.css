@@ -1,0 +1,57 @@
+* {margin:0; padding:0;}
+html,body {margin:5px;}
+th {text-align:center;white-space:nowrap;font-weight:normal;background-color:silver;}
+td {white-space:nowrap;padding:0 2px;border-color:silver;}
+select {font-family:"ＭＳ ゴシック";}
+table.top td {color:blue;cursor:pointer;}
+table.topk span {padding:0 0.1em;color:blue;cursor:pointer;}
+table.topk td {white-space:normal;padding:0;}
+.t {text-align:center;background-color:silver;}
+span.box {padding:1px 0.4em;border-collapse:collapse;border:2px ridge #333333;background-color:silver;}
+#d_att,#g_att,#g_attB {text-align:center;}
+#d_cri,#g_cri,#i_att,#i_zoku,#i_cri {text-align:right;}
+#s_tama,#s_gunAdd,#s_guns,#s_fue,#s_yumi_G,#s_gun_G,#gr_gun {display:none}
+#s_gun_G {font-size:85%}
+#s_gun_G select {font-size:85%}
+#sozai {font-size:0.8em;margin-right:0.1em; height:1.8em;text-align:center;}
+input.chkB {font-size:0.7em;margin-right:0.1em; height:1.8em;}
+
+table.damage col.dai {background-color:silver;}
+table.damage tr>td:first-child {background-color:silver;}
+table.damagek col.dai {text-align:center;background-color:silver;}
+table.damagek tr>td:first-child {text-align:center;background-color:silver;}
+table.gun {text-align:center;}
+table.gun col.dai {background-color:silver;}
+caption {text-align:left;}
+
+table.niku col.dai {background-color:silver;white-space:normal;}
+table.niku tr>td:first-child {background-color:silver;white-space:normal;}
+table.niku col.suu {text-align:right;}
+table.niku tr>td+td {text-align:right;}
+
+.fss {font-size:60%;} /*小さめ文字*/
+/*#d_spec {}*/
+#c_sinka {font-size:85%;}
+#m_WBody table td.rep {vertical-align:bottom;}
+#m_WBody table td.sozai {vertical-align:top;}
+/*武器一覧より*/
+/*笛*/
+#d_spec a.f {background-color:silver;}
+#d_spec a.f span.r {color:red;}
+#d_spec a.f span.b {color:blue;}
+#d_spec a.f span.w {color:white;}
+#d_spec a.f span.y {color:yellow;}
+#d_spec a.f span.g {color:lime;}
+#d_spec a.f span.a {color:aqua;}
+#d_spec a.f span.p {color:fuchsia;}
+/*ゲージ用*/
+#d_spec ul {margin:0;padding:1px 0;height:10px;width:101px;list-style-type:none;font-size:1px;background-color:slategray;}
+#d_spec li.r {float:left;height:10px;background-color:red;}
+#d_spec li.o {float:left;height:10px;background-color:orange;}
+#d_spec li.y {float:left;height:10px;background-color:yellow;}
+#d_spec li.g {float:left;height:10px;background-color:lime;}
+#d_spec li.b {float:left;height:10px;background-color:blue;}
+#d_spec li.w {float:left;height:10px;background-color:white;}
+#d_spec li.p {float:left;height:10px;background-color:violet;}
+#d_spec li.s {float:left;height:10px;background-color:LightSkyBlue;}
+#d_spec em {font-style:normal;color:red;} /*剛種*/
