@@ -2,58 +2,77 @@
 (function() {
   "use strict";
 
-  var WeaponType, setWeaponTypes, weaponTypes;
+  var afterLoading, checkDataLoading, equips, isLoaded, items, loadData, loadEquips, loadItems, loadMonsters, loadWeaponTypes, monsters, weaponTypes;
 
   weaponTypes = [];
 
-  WeaponType = (function() {
+  equips = [];
 
-    function WeaponType(name, text, isRange) {
-      this.name = name;
-      this.text = text;
-      this.isRange = isRange != null ? isRange : false;
-    }
+  monsters = [];
 
-    WeaponType.prototype.getWeaponClass = function() {
-      return "" + this.name + "-prop";
-    };
+  items = [];
 
-    WeaponType.prototype.getRangeClass = function() {
-      if (this.isRange) {
-        return "range-weapon-prop";
-      } else {
-        return "close-weapon-prop";
-      }
-    };
+  isLoaded = false;
 
-    WeaponType.prototype.getClasses = function() {
-      return [this.getWeaponClass(), this.getRangeClass()];
-    };
+  loadData = function() {
+    loadWeaponTypes();
+  };
 
-    WeaponType.prototype.getText = function(lang) {
-      return this.text[lang];
-    };
-
-    return WeaponType;
-
-  })();
-
-  setWeaponTypes = function(callback) {
+  loadWeaponTypes = function() {
     return $.getJSON("data/weapon_types.json", function(data) {
-      var weaponType, _i, _len, _ref;
-      _ref = data["weaponTypes"];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        weaponType = _ref[_i];
-        weaponTypes.push(new WeaponType(weaponType["id"], weaponType["text"], weaponType["isRange"]));
+      weaponTypes = data.weaponTypes;
+      return checkDataLoading();
+    });
+  };
+
+  loadEquips = function() {
+    return $.getJSON("data/equips.json", function(data) {
+      equips = data.equips;
+      return checkDataLoading();
+    });
+  };
+
+  loadMonsters = function() {
+    return $.getJSON("data/monsters.json", function(data) {
+      monsters = data.monsters;
+      return checkDataLoading();
+    });
+  };
+
+  loadItems = function() {
+    return $.getJSON("data/items.json", function(data) {
+      items = data.items;
+      return checkDataLoading();
+    });
+  };
+
+  checkDataLoading = function() {
+    if (isLoaded) {
+      return true;
+    }
+    try {
+      if (!(weaponTypes && weaponTypes.length > 0)) {
+        throw "weaponTypes";
       }
-      return callback.call();
+      isLoaded = true;
+      afterLoading();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
+  afterLoading = function() {
+    console.log("Loading Completed.");
+    return $("#nowLoading").animate({
+      opacity: 0
+    }, 1000, function() {
+      return $(this).hide();
     });
   };
 
   $(function() {
-    setWeaponTypes(function(data) {
-      return console.log(weaponTypes);
-    });
+    loadData();
   });
 
 }).call(this);
