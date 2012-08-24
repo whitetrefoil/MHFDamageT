@@ -1,0 +1,42 @@
+@charset "utf-8"
+
+$MainFontFamily: "Meiryo UI", "Microsoft YaHei", "MS Gothic", "SimSun", sans-serif
+
+html
+  margin: 0
+  padding: 0
+
+body
+  margin: 10px
+  padding: 0
+  font: 14px/1.5 $MainFontFamily
+  color: #555555
+
+input, select, textarea
+  font: 12px/1 $MainFontFamily
+  color: #444444
+
+br
+  display: none
+
+table
+  border:
+    top: none
+    right: 1px solid #CCDDFF
+    bottom: none
+    left: 1px solid #CCDDFF
+  border-collapse: collapse
+  border-radius: 5px
+  width: 100%
+
+  &:first-child
+    border-top: 1px solid #CCDDFF
+
+  th, td
+    border:
+      top: none
+      right: none
+      bottom: 1px solid #DDE7FF
+      left: none
+  th, td.t
+    background-color: #EEF3FF
